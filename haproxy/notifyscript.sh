@@ -29,4 +29,3 @@ case $STATE in
   exit 1
   ;;
 esac
-
