@@ -24,3 +24,4 @@ RUN chmod +x /bin/start-keepalived.sh \
 
 ENTRYPOINT ["/bin/start-keepalived.sh"]
 
+
