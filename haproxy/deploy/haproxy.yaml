@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: haproxy
-    image: lukaszbielinski/k8s-api-loadbalancer-haproxy:latest
+    image: djkormo/k8s-api-loadbalancer-haproxy:latest
     imagePullPolicy: Always
     # livenessProbe:
     #   failureThreshold: 8
