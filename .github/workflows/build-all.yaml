@@ -13,7 +13,7 @@ jobs:
 
 
   buildDocker:
-    needs: validateHelmCharts
+  
     runs-on: ubuntu-latest
     env:
       APP_NAME: djkormo-project-operator
