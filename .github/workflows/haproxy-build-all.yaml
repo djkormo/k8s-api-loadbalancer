@@ -1,4 +1,4 @@
-name: build all pipeline
+name: haproxy build all pipeline
 
 on:
   push:
@@ -6,11 +6,9 @@ on:
       - '**.bash'
       - '**.sh'
       - 'haproxy/Dockerfile'
-      - 'keepalived/Dockerfile'
 
 
 jobs:
-
 
 
   buildDocker:
@@ -57,14 +55,6 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         
-    - name: Build and push keepalived
-      uses: docker/build-push-action@v2
-      with:
-        context: keepalived/
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-      
 
     - name: Run Trivy vulnerability scanner for haproxy
       uses: aquasecurity/trivy-action@master
@@ -76,15 +66,7 @@ jobs:
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
         
-    - name: Run Trivy vulnerability scanner for keepalived
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: djkormo/k8s-api-loadbalancer-keepalived:main
-        format: 'table'
-        exit-code: '1'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+
 
 
 
