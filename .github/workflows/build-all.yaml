@@ -48,19 +48,37 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         
-    - name: Build and push
+    - name: Build and push haproxy
       uses: docker/build-push-action@v2
       with:
-        context: .
+        context: haproxy/Dockerfile
+        push: ${{ github.event_name != 'pull_request' }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        
+    - name: Build and push keepalived
+      uses: docker/build-push-action@v2
+      with:
+        context: keepalived/Dockerfile
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
       
 
-    - name: Run Trivy vulnerability scanner
+    - name: Run Trivy vulnerability scanner for haproxy
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: djkormo/k8s-api-loadbalancer-haproxy:main
+        image-ref: djkormo/k8s-api-loadbalancer-haproxy:latest
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+        
+    - name: Run Trivy vulnerability scanner for keepalived
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: djkormo/k8s-api-loadbalancer-keepalived:latest
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
