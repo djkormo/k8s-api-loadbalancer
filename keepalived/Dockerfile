@@ -23,3 +23,4 @@ RUN chmod +x /bin/start-keepalived.sh \
     && chmod +x /usr/local/bin/check_haproxy.sh
 
 ENTRYPOINT ["/bin/start-keepalived.sh"]
+
