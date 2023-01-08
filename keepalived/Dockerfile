@@ -5,7 +5,7 @@ FROM python:3.7-alpine${ALPINE_VERSION}
 RUN apk --no-cache add  gcc musl-dev curl bash
 
 RUN set -x \
-    && apk add --no-cache gcc musl-dev curl bash  keepalived=2.2.4-r2
+    && apk add --no-cache gcc musl-dev curl bash  keepalived=2.2.7-r1
 
 
 ENV LC_ALL en_US.UTF-8
