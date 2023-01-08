@@ -1,15 +1,16 @@
-FROM centos:8
+ARG ALPINE_VERSION=3.15
+ARG HAPROXY_VERSION=2.4.20-r0
+FROM python:3.7-alpine${ALPINE_VERSION}
+
+RUN apk --no-cache add  gcc musl-dev curl bash
+
+RUN set -x \
+    && apk add --no-cache gcc musl-dev curl bash openssl haproxy=2.4.20-r0
+    
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
-
-RUN yum update -y -v && \
-    yum upgrade -y && \
-    yum install -y langpacks-en glibc-all-langpacks epel-release && \
-    yum install -y  haproxy && \
-    yum clean all && rm -rf /var/cache/yum/* && \
-    sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.conf
-
 
 COPY start-haproxy.sh /bin/start-haproxy.sh
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
