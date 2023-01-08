@@ -51,7 +51,7 @@ jobs:
     - name: Build and push haproxy
       uses: docker/build-push-action@v2
       with:
-        context: haproxy/Dockerfile
+        context: haproxy/
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
@@ -59,7 +59,7 @@ jobs:
     - name: Build and push keepalived
       uses: docker/build-push-action@v2
       with:
-        context: keepalived/Dockerfile
+        context: keepalived/
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
