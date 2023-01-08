@@ -5,7 +5,8 @@ on:
     paths:
       - '**.bash'
       - '**.sh'
-      - 'Dockerfile'
+      - 'haproxy/Dockerfile'
+      - 'keepalived/Dockerfile'
 
 
 jobs:
@@ -16,7 +17,7 @@ jobs:
   
     runs-on: ubuntu-latest
     env:
-      APP_NAME: djkormo-project-operator
+      APP_NAME: djkormo-k8s-api-loadbalancer
 
     steps:
     - uses: actions/checkout@v2
