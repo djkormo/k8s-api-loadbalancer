@@ -5,7 +5,7 @@ on:
     paths:
       - '**.bash'
       - '**.sh'
-      - 'haproxy/Dockerfile'
+      - 'keepalived/Dockerfile'
 
 
 jobs:
