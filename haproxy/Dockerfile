@@ -18,4 +18,3 @@ COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 RUN chmod +x /bin/start-haproxy.sh
 
 ENTRYPOINT ["/bin/start-haproxy.sh"]
-
