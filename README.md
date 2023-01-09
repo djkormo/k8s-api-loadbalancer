@@ -1,5 +1,13 @@
 HA configuration for deploying kubernetes cluster via kubespray
 
+Haproxy + Keepalived
+
+
+[![haproxy build all pipeline](https://github.com/djkormo/k8s-api-loadbalancer/actions/workflows/haproxy-build-all.yaml/badge.svg)](https://github.com/djkormo/k8s-api-loadbalancer/actions/workflows/haproxy-build-all.yaml)
+
+
+[![keepalived build all pipeline](https://github.com/djkormo/k8s-api-loadbalancer/actions/workflows/keepalived-build-all.yaml/badge.svg)](https://github.com/djkormo/k8s-api-loadbalancer/actions/workflows/keepalived-build-all.yaml)
+
 
 Based on
 
