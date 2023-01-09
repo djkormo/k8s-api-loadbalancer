@@ -1,7 +1,7 @@
 ARG ALPINE_VERSION=3.16
 ARG HAPROXY_VERSION=2.4.20-r0
-FROM python:3.7-alpine${ALPINE_VERSION}
-
+#FROM python:3.7-alpine${ALPINE_VERSION}
+FROM alpine${ALPINE_VERSION}
 RUN apk --no-cache add  gcc musl-dev curl bash
 
 RUN set -x \
